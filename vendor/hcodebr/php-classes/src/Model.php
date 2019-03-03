@@ -39,7 +39,7 @@ class Model {
     }
     
 
-    public function getValue()
+    public function getValues()
      {
 
 
