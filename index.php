@@ -342,6 +342,22 @@ $app->post("/admin/categories/:idcategory", function($idcategory){
 
 });
 
+$app->get("/categories/:idcategory", function ($idcategory){
+   
+   $page = new 	Page();
+
+   $category = new Category();
+ 
+   $category->get((int)$idcategory);
+
+   $page->setTpl("category", [
+       'category'=>$category->getValues(),
+       'products'=>[]
+
+   ]);  
+
+});
+
 $app->run();
 
 
