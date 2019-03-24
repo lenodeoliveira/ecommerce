@@ -3,6 +3,11 @@
 use \Hcode\Page;
 use \Hcode\Model\Product;
 use \Hcode\Model\Category;
+use \Hcode\Model\Cart;
+use \Hcode\Model\Address;
+use \Hcode\Model\User;
+use \Hcode\Model\Order;
+use \Hcode\Model\OrderStatus;
 
 $app->get('/', function() {
 
@@ -47,6 +52,17 @@ $app->get("/categories/:idcategory", function ($idcategory){
 
 });
 
+$app->get("/products/:desurl", function($desurl){
+	
+ 
+	$product = new Product();
+	$product->getFromURL($desurl);
+	$page = new Page();
+	$page->setTpl("product-detail", [
+		'product'=>$product->getValues(),
+		'categories'=>$product->getCategories()
+	]);
+});
 
 
 ?>
